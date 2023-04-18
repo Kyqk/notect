@@ -54,3 +54,14 @@ def edit_note():
         save_notes(notes)
     else:
         print("\nЗаметка не найдена!")    
+
+def delete_note():
+    notes = load_notes()
+    note_id = int(input("Введите номер заметки для удаления: "))
+    note = next((note for note in notes if note['id'] == note_id), None)
+    if note:
+        notes.remove(note)
+        save_notes(notes)
+        print("\nЗаметка удалена!")
+    else:
+        print("\nЗаметка не найдена!")        
