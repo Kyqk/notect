@@ -22,3 +22,11 @@ def get_notes(query=None):
     if not notes:
         print("Заметки отсутствуют!")
     return notes
+
+def view_note(note_id):
+    notes = load_notes()
+    note = next((note for note in notes if note['id'] == note_id), None)
+    if note:
+        return note
+    else:
+        return None    
