@@ -39,3 +39,18 @@ def add_note():
     note_id = len(notes) + 1
     notes.append({'id': note_id, 'title': note_title, 'text': note_text, 'date': note_date})
     save_notes(notes)
+
+def edit_note():
+    notes = load_notes()
+    note_id = int(input("Введите номер заметки для редактирования: "))
+    note = next((note for note in notes if note['id'] == note_id), None)
+    if note:
+        note_title = input("Введите новый заголовок заметки: ")
+        note_text = input("Введите новый текст заметки: ")
+        note_date = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
+        note['title'] = note_title
+        note['text'] = note_text
+        note['date'] = note_date
+        save_notes(notes)
+    else:
+        print("\nЗаметка не найдена!")    
