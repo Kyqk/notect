@@ -30,3 +30,12 @@ def view_note(note_id):
         return note
     else:
         return None    
+
+def add_note():
+    notes = load_notes()
+    note_title = input("Введите заголовок заметки: ")
+    note_text = input("Введите текст заметки: ")
+    note_date = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
+    note_id = len(notes) + 1
+    notes.append({'id': note_id, 'title': note_title, 'text': note_text, 'date': note_date})
+    save_notes(notes)
